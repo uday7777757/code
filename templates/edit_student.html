@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="card section">
+<h2>Edit Student Details</h2>
+<form method="POST" class="form">
+    <input name="full_name" value="{{ student[1] }}" required>
+    <input name="email" type="email" value="{{ student[2] }}" required>
+    <input name="course" value="{{ student[3] }}" required>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="/" class="btn btn-ghost">Cancel</a>
+    </div>
+</form>
+</div>
+
+{% endblock %}

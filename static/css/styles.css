@@ -1,0 +1,262 @@
+:root {
+    --bg: #f6f8fc;
+    --surface: #ffffff;
+    --text: #14213d;
+    --muted: #5b6473;
+    --border: #dbe3ef;
+    --primary: #0b63f6;
+    --primary-dark: #0846ad;
+    --danger: #cf2f2f;
+    --danger-dark: #a12525;
+    --edit: #e19513;
+    --edit-dark: #b87100;
+    --shadow: 0 10px 30px rgba(20, 33, 61, 0.08);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 15% -10%, #d6e6ff 0%, transparent 42%),
+        radial-gradient(circle at 90% 0%, #ffeacc 0%, transparent 38%),
+        var(--bg);
+}
+
+.container {
+    width: min(1050px, 92vw);
+    margin: 40px auto 48px;
+}
+
+.page-header {
+    margin-bottom: 24px;
+}
+
+.page-header .eyebrow {
+    margin: 0 0 8px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-weight: 700;
+}
+
+.page-header h1 {
+    margin: 0;
+    font-size: clamp(1.7rem, 2.8vw, 2.3rem);
+}
+
+.topbar {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.user-chip {
+    margin: 0;
+    color: var(--muted);
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+}
+
+.section {
+    padding: 22px;
+    margin-bottom: 18px;
+}
+
+.section h2 {
+    margin: 0 0 14px;
+    font-size: 1.05rem;
+}
+
+.stats-card {
+    background: linear-gradient(125deg, #0b63f6, #2e7fff);
+    color: #ffffff;
+}
+
+.stats-card .label {
+    margin: 0;
+    opacity: 0.88;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.78rem;
+}
+
+.stats-card .value {
+    margin: 10px 0 0;
+    font-size: 2rem;
+    font-weight: 800;
+}
+
+.search-bar,
+.form {
+    display: grid;
+    gap: 12px;
+}
+
+.search-bar {
+    grid-template-columns: 1fr auto;
+}
+
+input {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 12px;
+    font-size: 0.95rem;
+    color: var(--text);
+    background: #fefefe;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+    border-color: #87b4ff;
+    box-shadow: 0 0 0 3px rgba(11, 99, 246, 0.16);
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    border: 0;
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: #ffffff;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, filter 0.15s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    filter: brightness(0.96);
+}
+
+.btn-primary {
+    background: var(--primary);
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-edit {
+    background: var(--edit);
+}
+
+.btn-edit:hover {
+    background: var(--edit-dark);
+}
+
+.btn-delete {
+    background: var(--danger);
+}
+
+.btn-delete:hover {
+    background: var(--danger-dark);
+}
+
+.btn-ghost {
+    background: #eef2f8;
+    color: #2f3a4e;
+}
+
+.table-wrap {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 620px;
+}
+
+thead th {
+    background: #f1f5fb;
+    color: #25324a;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+th,
+td {
+    padding: 12px;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+}
+
+tbody tr:hover {
+    background: #f9fbff;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.empty-state {
+    margin: 14px 0 0;
+    color: var(--muted);
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-card {
+    max-width: 440px;
+    margin: 0 auto;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.alert {
+    margin: 0;
+    color: #8a1c1c;
+    background: #fdeeee;
+    border: 1px solid #f6c5c5;
+    border-radius: 10px;
+    padding: 10px 12px;
+}
+
+@media (max-width: 768px) {
+    .container {
+        margin: 22px auto 28px;
+    }
+
+    .section {
+        padding: 16px;
+    }
+
+    .search-bar {
+        grid-template-columns: 1fr;
+    }
+
+    .actions {
+        flex-wrap: wrap;
+    }
+
+    .topbar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

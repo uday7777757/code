@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="page-header">
+            <p class="eyebrow">Campus Admin</p>
+            <h1>Student Management System</h1>
+            {% if is_authenticated %}
+            <div class="topbar">
+                <p class="user-chip">Signed in as <strong>{{ current_user }}</strong> ({{ current_role }})</p>
+                <a class="btn btn-ghost" href="/logout">Logout</a>
+            </div>
+            {% endif %}
+        </header>
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

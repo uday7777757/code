@@ -1,0 +1,36 @@
+services:
+  db:
+    image: mysql:8.4
+    container_name: mysql_container
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: student_db
+      MYSQL_USER: student
+      MYSQL_PASSWORD: student123
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  web:
+    build: .
+    ports:
+      - "8000:5000"
+    environment:
+      DB_HOST: db
+      DB_PORT: 3306
+      DB_USER: student
+      DB_PASSWORD: student123
+      DB_NAME: student_db
+      FLASK_DEBUG: "false"
+      SECRET_KEY: "Uday2020#"
+      ADMIN_USERNAME: "admin"
+      ADMIN_PASSWORD: "admin123"
+      VIEWER_USERNAME: "viewer"
+      VIEWER_PASSWORD: "viewer123"
+    depends_on:
+      - db
+
+volumes:
+  db_data:

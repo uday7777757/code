@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="stats-card card">
+    {% if search %}
+    <p class="label">Matched Students</p>
+    <p class="value">{{ filtered_total }} / {{ total }}</p>
+    {% else %}
+    <p class="label">Total Students</p>
+    <p class="value">{{ total }}</p>
+    {% endif %}
+</div>
+
+<div class="card section">
+    <h2>Find Student</h2>
+    <form method="GET" action="/" class="search-bar" autocomplete="off">
+        <input name="search" placeholder="Search by name, email, course, or ID..." value="{{ search }}">
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+</div>
+
+{% if is_admin %}
+<div class="card section">
+    <h2>Add New Student</h2>
+    <form action="/add" method="POST" class="form">
+        <input name="full_name" placeholder="Full Name" required>
+        <input name="email" type="email" placeholder="Email" required>
+        <input name="course" placeholder="Course" required>
+        <button type="submit" class="btn btn-primary">Add Student</button>
+    </form>
+</div>
+{% else %}
+<div class="card section">
+    <p class="muted">Viewer access: you can search and view students. Only admins can add, edit, or delete records.</p>
+</div>
+{% endif %}
+
+<div class="card section">
+<div class="table-wrap">
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Course</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for student in students %}
+        <tr>
+            <td>{{ student[0] }}</td>
+            <td>{{ student[1] }}</td>
+            <td>{{ student[2] }}</td>
+            <td>{{ student[3] }}</td>
+            <td class="actions">
+                {% if is_admin %}
+                <a class="btn btn-edit" href="/edit/{{ student[0] }}">Edit</a>
+                <a class="btn btn-delete" href="/delete/{{ student[0] }}">Delete</a>
+                {% else %}
+                <span class="muted">No permission</span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+</div>
+
+{% if not students %}
+<p class="empty-state">No students found. Add one or change your search.</p>
+{% endif %}
+</div>
+
+{% endblock %}
